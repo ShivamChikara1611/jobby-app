@@ -1,13 +1,19 @@
-import React from "react"
+import React from "react";
+import { Link, useNavigate } from "react-router-dom"; // Updated import
+import Cookies from "js-cookie";
+import { ImHome } from "react-icons/im";
+import { FiLogOut } from "react-icons/fi";
 
-const websiteLogo = 'https://assets.ccbp.in/frontend/react-js/logo-img.png'
+const websiteLogo = 'https://assets.ccbp.in/frontend/react-js/logo-img.png';
 
-const Header = props => {
+const Header = () => {
+  const navigate = useNavigate(); // Use useNavigate hook
+
   const onClickLogout = () => {
-    const {history} = props
-    Cookies.remove('jwt_token')
-    history.replace('/login')
-  }
+    Cookies.remove('jwt_token');
+    navigate('/login'); // Use navigate instead of history.replace
+  };
+
   return (
     <nav className="nav-container">
       <ul className="header-ul-container">
@@ -23,8 +29,7 @@ const Header = props => {
           </Link>
           <Link className="link" to="/jobs">
             <h1 className="nav-text">Jobs</h1>
-
-            <button className="home-jobs-btn"> Jobs</button>
+            <button className="home-jobs-btn">Jobs</button>
           </Link>
         </li>
         <li>
@@ -35,7 +40,7 @@ const Header = props => {
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -8,17 +8,15 @@ import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<LoginForm />} />
-      <Route element={<ProtectedRoute />}>
-        <Route path="/jobs" element={<AllJobs />} />
-        <Route path="/jobs/:id" element={<AboutJobItem />} />
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </Router>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/login" element={<LoginForm />} />
+    <Route element={<ProtectedRoute />}>
+      <Route path="/jobs" element={<AllJobs />} />
+      <Route path="/jobs/:id" element={<AboutJobItem />} />
+    </Route>
+    <Route path="*" element={<NotFound />} />
+  </Routes>
 );
 
 export default App;

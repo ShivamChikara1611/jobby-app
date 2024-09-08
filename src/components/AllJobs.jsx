@@ -1,11 +1,10 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import Cookies from 'js-cookie';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Header from './Header';
-import JobItem from './JobItem';
+import JobItem from './JobItem';  // Ensure JobItem is used here
 
 const employmentTypesList = [
   { label: 'Full Time', employmentTypeId: 'FULLTIME' },
@@ -190,7 +189,7 @@ const AllJobs = () => {
       return (
         <ul className="ul-job-items-container">
           {jobsData.map(eachItem => (
-            <ThreeDots key={eachItem.id} jobData={eachItem} />
+            <JobItem key={eachItem.id} jobData={eachItem} /> 
           ))}
         </ul>
       );
