@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { MdLocationOn } from 'react-icons/md';
 import { AiFillStar } from 'react-icons/ai';
 import { BiLinkExternal } from 'react-icons/bi';
-import Loader from 'react-loader-spinner';
+import {ThreeDots} from 'react-loader-spinner';
 import Header from './Header';
 import SimilarJobs from './SimilarJobs';
 
@@ -199,7 +199,7 @@ const AboutJobItem = () => {
 
   const renderJobLoadingView = () => (
     <div className="job-details-loader" testid="loader">
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+      <ThreeDots type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   );
 
