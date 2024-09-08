@@ -13,33 +13,36 @@ const SimilarJobs = ({ similarJobData, employmentType }) => {
   } = similarJobData;
 
   return (
-    <li className="similar-job-li-container">
+    <li className="border border-2 rounded-md flex gap-3 p-4 lg:max-w-[380px] lg:max-h-[240px] md:gap-5 overflow-hidden">
       <div className="img-job-title-container">
         <img
-          className="company-job-logo"
+          className="mb-4"
           src={companyLogoUrl}
           alt="similar job company logo"
         />
-        <div className="title-job-rating-container">
-          <h1 className="title-job-heading">{title}</h1>
-          <div className="star-job-rating-container">
-            <AiFillStar className="star-job-icon" />
-            <p className="rating-job-text">{rating}</p>
+        <div className="text-md my-1 flex gap-3 items-start">
+          <h1 className="text-sm">{title}</h1>
+          <div className="flex gap-1 items-center text-gray-300">
+            <AiFillStar />
+            <p>{rating}</p>
           </div>
         </div>
-      </div>
-      <div className="second-part-job-container">
-        <h1 className="description-job-heading">Description</h1>
-        <p className="description-job-para">{jobDescription}</p>
-      </div>
-      <div className="location-job-details-type-container">
-        <div className="location-job-icon-location-container">
-          <MdLocationOn className="location-job-icon" />
-          <p className="location-job">{location}</p>
+
+        <div className="flex items-center gap-1 text-gray-400 text-xs">
+          <MdLocationOn/>
+          <p>{location}</p>
         </div>
-        <div className="employment-job-type-icon-employment-type-container">
-          <p className="job-type">{employmentType}</p>
+
+        <div className="mt-3 text-sm">
+          <p className="text-gray-400">{employmentType}</p>
         </div>
+
+      </div>
+
+
+      <div className="text-xs max-w-[70%]">
+        <h1 className="text-lg text-gray-200 mb-2">Description</h1>
+        <p className="text-gray-400">{jobDescription}</p>
       </div>
     </li>
   );

@@ -8,6 +8,7 @@ import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => (
+  <div className='mx-4 sm:mx-[10%]'>
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<LoginForm />} />
@@ -17,6 +18,7 @@ const App = () => (
     </Route>
     <Route path="*" element={<NotFound />} />
   </Routes>
+  </div>
 );
 
 export default App;

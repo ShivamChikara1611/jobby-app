@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { MdLocationOn } from 'react-icons/md';
-import { AiFillStar } from 'react-icons/ai';
-import { BiLinkExternal } from 'react-icons/bi';
-import {ThreeDots} from 'react-loader-spinner';
-import Header from './Header';
-import SimilarJobs from './SimilarJobs';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
+import { MdLocationOn } from "react-icons/md";
+import { AiFillStar } from "react-icons/ai";
+import { BiLinkExternal } from "react-icons/bi";
+import { ThreeDots } from "react-loader-spinner";
+import Header from "./Header";
+import SimilarJobs from "./SimilarJobs";
 
 const apiStatusConstants = {
-  initial: 'INITIAL',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-  inProgress: 'IN_PROGRESS',
+  initial: "INITIAL",
+  success: "SUCCESS",
+  failure: "FAILURE",
+  inProgress: "IN_PROGRESS",
 };
 
 const AboutJobItem = () => {
@@ -24,11 +24,11 @@ const AboutJobItem = () => {
   useEffect(() => {
     const getJobData = async () => {
       setApiStatus(apiStatusConstants.inProgress);
-      const jwtToken = Cookies.get('jwt_token');
+      const jwtToken = Cookies.get("jwt_token");
       const jobDetailsApiUrl = `https://apis.ccbp.in/jobs/${id}`;
       const optionsJobData = {
         headers: { Authorization: `Bearer ${jwtToken}` },
-        method: 'GET',
+        method: "GET",
       };
 
       try {
@@ -36,7 +36,7 @@ const AboutJobItem = () => {
         if (responseJobData.ok) {
           const fetchedJobData = await responseJobData.json();
           const updatedJobDetailsData = [fetchedJobData.job_details].map(
-            eachItem => ({
+            (eachItem) => ({
               companyLogoUrl: eachItem.company_logo_url,
               companyWebsiteUrl: eachItem.company_website_url,
               employmentType: eachItem.employment_type,
@@ -49,7 +49,7 @@ const AboutJobItem = () => {
               location: eachItem.location,
               packagePerAnnum: eachItem.package_per_annum,
               rating: eachItem.rating,
-              skills: eachItem.skills.map(eachSkill => ({
+              skills: eachItem.skills.map((eachSkill) => ({
                 imageUrl: eachSkill.image_url,
                 name: eachSkill.name,
               })),
@@ -58,7 +58,7 @@ const AboutJobItem = () => {
           );
 
           const updatedSimilarJobDetails = fetchedJobData.similar_jobs.map(
-            eachItem => ({
+            (eachItem) => ({
               companyLogoUrl: eachItem.company_logo_url,
               id: eachItem.id,
               jobDescription: eachItem.job_description,
@@ -99,71 +99,63 @@ const AboutJobItem = () => {
 
       return (
         <>
-          <div className="job-item-container">
-            <div className="first-part-container">
-              <div className="img-title-container">
-                <img
-                  className="company-logo"
-                  src={companyLogoUrl}
-                  alt="job details company logo"
-                />
-                <div className="title-rating-container">
-                  <h1 className="title-heading">{title}</h1>
-                  <div className="star-rating-container">
-                    <AiFillStar className="star-icon" />
-                    <p className="rating-text">{rating}</p>
-                  </div>
+          <div className="mt-8 rounded-lg border border-2 p-5 mb-8">
+            <div className="flex items-center gap-5">
+              <img
+                src={companyLogoUrl}
+                className="w-[100px]"
+                alt="job details company logo"
+              />
+              <div>
+                <h1 className="text-lg font-semibold text-gray-200">{title}</h1>
+                <div className="flex gap-0.5 items-center text-gray-400 text-xs">
+                  <AiFillStar />
+                  <p>{rating}</p>
                 </div>
-              </div>
-              <div className="location-package-container">
-                <div className="location-job-type-container">
-                  <div className="location-icon-location-container">
-                    <MdLocationOn className="location-icon" />
-                    <p className="location">{location}</p>
-                  </div>
-                  <div className="employment-type-icon-employment-type-container">
-                    <p className="job-type">{employmentType}</p>
-                  </div>
+                <div className="flex items-center text-sm">
+                  <MdLocationOn />
+                  <p>{location}</p>
                 </div>
-                <div className="package-container">
-                  <p className="package">{packagePerAnnum}</p>
+                <div className="flex gap-1 text-sm">
+                  <p className="text-gray-300">{employmentType}</p>
+                  <p>{packagePerAnnum}</p>
                 </div>
               </div>
             </div>
-            <hr className="item-hr-line" />
-            <div className="second-part-container">
-              <div className="description-visit-container">
-                <h1 className="description-job-heading">Description</h1>
-                <a className="visit-anchor" href={companyWebsiteUrl}>
+
+            <hr className="border border-gray-700 my-3"/>
+
+            <div className="mb-8">
+              <div className="flex items-center gap-3">
+                <h1 className="font-semibold text-xl">Description</h1>
+                <a href={companyWebsiteUrl} className="flex items-center text-xs gap-0.5 text-blue-600">
                   Visit <BiLinkExternal />
                 </a>
               </div>
-              <p className="description-para">{jobDescription}</p>
+              <p className="text-xs">{jobDescription}</p>
             </div>
-            <h1>Skills</h1>
-            <ul className="ul-job-details-container">
-              {skills.map(eachItem => (
-                <li className="li-job-details-container" key={eachItem.name}>
-                  <img
-                    className="skill-img"
-                    src={eachItem.imageUrl}
-                    alt={eachItem.name}
-                  />
-                  <p>{eachItem.name}</p>
+
+
+            <h1 className="text-lg mb-3">Skills</h1>
+            <ul className="flex flex-wrap gap-2 mb-8">
+              {skills.map((eachItem) => (
+                <li key={eachItem.name}>
+                  <img className="max-w-[50px]" src={eachItem.imageUrl} alt={eachItem.name} />
+                  <p className="text-[8px] text-center mt-0.5">{eachItem.name}</p>
                 </li>
               ))}
             </ul>
-            <div className="company-life-img-container">
-              <div className="life-heading-para-container">
-                <h1>Life at Company</h1>
-                <p>{lifeAtCompany.description}</p>
+            <div>
+              <div className="mb-8">
+                <h1 className="text-lg mb-3">Life at Company</h1>
+                <p className="text-xs">{lifeAtCompany.description}</p>
               </div>
               <img src={lifeAtCompany.imageUrl} alt="life at company" />
             </div>
           </div>
-          <h1 className="similar-jobs-heading">Similar Jobs</h1>
-          <ul className="similar-jobs-ul-container">
-            {similarJobsData.map(eachItem => (
+          <h1 className="text-3xl mb-5 text-center font-semibold">Similar Jobs</h1>
+          <ul className="flex flex-wrap gap-5 justify-center items-center mb-8">
+            {similarJobsData.map((eachItem) => (
               <SimilarJobs
                 key={eachItem.id}
                 similarJobData={eachItem}
@@ -178,16 +170,16 @@ const AboutJobItem = () => {
   };
 
   const renderJobFailureView = () => (
-    <div className="job-details-failure-view">
+    <div>
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
       />
-      <h1>Oops! Something Went Wrong</h1>
-      <p>We cannot seem to find the page you are looking for.</p>
-      <div className="btn-container-failure">
+      <h1 className="text-red-600 text-xl font-semibold mb-2 lg:text-4xl mt-3">Oops! Something Went Wrong</h1>
+      <p className="text-gray-500 text-center lg:text-2xl lg:mt-3">We cannot seem to find the page you are looking for.</p>
+      <div>
         <button
-          className="failure-job-details-btn"
+        className="border border-2 rounded-md text-lg w-full py-2 cursor-pointer hover:bg-yellow-500 hover:border-transparent transition-all duration-300 mt-5"
           type="button"
           onClick={() => setApiStatus(apiStatusConstants.initial)}
         >
@@ -198,7 +190,7 @@ const AboutJobItem = () => {
   );
 
   const renderJobLoadingView = () => (
-    <div className="job-details-loader" testid="loader">
+    <div testid="loader">
       <ThreeDots type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   );
@@ -219,9 +211,7 @@ const AboutJobItem = () => {
   return (
     <>
       <Header />
-      <div className="job-details-view-container">
-        {renderJobDetails()}
-      </div>
+      <div>{renderJobDetails()}</div>
     </>
   );
 };

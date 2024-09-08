@@ -49,31 +49,31 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="login-container">
-      <form className="login-form-container" onSubmit={onSubmitLoginForm}>
-        <div className="form-logo-container">
-          <img src={websiteLogoInForm} alt="website logo" />
+    <div className="flex flex-col justify-center items-center h-[100vh]">
+      <form className="border border-2 rounded-lg p-8" onSubmit={onSubmitLoginForm}>
+        <div className='flex justify-center mb-8'>
+          <img className='' src={websiteLogoInForm} alt="website logo" />
         </div>
-        <label className="form-label" htmlFor="username">
-          USERNAME
+        <label className="text-lg" htmlFor="username">
+          Username
         </label>
         <br />
         <input
-          className="form-input"
+          className="bg-transparent border outline-none p-1 mt-2 px-2 rounded-md"
           type="text"
           value={username}
           onChange={e => setUsername(e.target.value)}
-          placeholder="username"
+          placeholder="Enter here"
           id="username"
         />
         <br />
         <br />
-        <label className="form-label" htmlFor="password">
-          PASSWORD
+        <label className="text-lg" htmlFor="password">
+          Password
         </label>
         <br />
         <input
-          className="form-input"
+          className="bg-transparent border outline-none p-1 mt-2 px-2 rounded-md"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
@@ -82,7 +82,7 @@ const LoginForm = () => {
         />
         <br />
         <br />
-        <button className="form-submit-button" type="submit">
+        <button className="bg-blue-800 py-1 rounded-md w-full mt-5" type="submit">
           Login
         </button>
         {showSubmitError && <p className="error-message">*{errorMsg}</p>}

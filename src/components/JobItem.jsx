@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { MdLocationOn } from 'react-icons/md';
-import { AiFillStar } from 'react-icons/ai';
+import React from "react";
+import { Link } from "react-router-dom";
+import { MdLocationOn } from "react-icons/md";
+import { AiFillStar } from "react-icons/ai";
 
 const JobItem = ({ jobData }) => {
   const {
@@ -16,44 +16,40 @@ const JobItem = ({ jobData }) => {
   } = jobData;
 
   return (
-    <Link to={`/jobs/${id}`} className="link-item">
-      <li className="job-item-container">
-        <div className="first-part-container">
-          <div className="img-title-container">
-            <img
-              className="company-logo"
-              src={companyLogoUrl}
-              alt={`${title} logo`}
-            />
-            <div className="title-rating-container">
-              <h1 className="title-heading">{title}</h1>
-              <div className="star-rating-container">
-                <AiFillStar className="star-icon" />
-                <p className="rating-text">{rating}</p>
-              </div>
-            </div>
-          </div>
-          <div className="location-package-container">
-            <div className="location-job-type-container">
-              <div className="location-icon-location-container">
-                <MdLocationOn className="location-icon" />
-                <p className="location">{location}</p>
-              </div>
-              <div className="employment-type-icon-employment-type-container">
-                <p className="job-type">{employmentType}</p>
-              </div>
-            </div>
+    <Link to={`/jobs/${id}`}>
+      <div>
+        <li className="border border-2 rounded-md flex gap-3 p-4 lg:max-w-[380px] lg:max-h-[270px] md:gap-5 overflow-hidden">
+          <div>
             <div>
-              <p className="package">{packagePerAnnum}</p>
+              <img src={companyLogoUrl} alt={`${title} logo`} className="mb-4"/>
+              <div className="text-md my-1 flex gap-3 items-start">
+                <h1 className="text-sm">{title}</h1>
+                <div className="flex gap-1 items-center text-gray-300">
+                  <AiFillStar />
+                  <p>{rating}</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-2">
+              <div>
+                <div className="flex items-center gap-1 text-gray-400 text-xs">
+                  <MdLocationOn/>
+                  <p>{location}</p>
+                </div>
+              </div>
+              <div className="mt-3 text-sm">
+                <p className="text-gray-400">{employmentType}</p>
+                <p className="font-semibold">{packagePerAnnum}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <hr className="item-hr-line" />
-        <div className="second-part-container">
-          <h1 className="description-heading">Description</h1>
-          <p className="description-para">{jobDescription}</p>
-        </div>
-      </li>
+          
+          <div className="text-xs max-w-[70%]">
+            <h1 className="text-lg text-gray-200 mb-2">Description</h1>
+            <p className="text-gray-400">{jobDescription}</p>
+          </div>
+        </li>
+      </div>
     </Link>
   );
 };

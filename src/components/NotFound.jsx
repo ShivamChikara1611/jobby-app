@@ -7,12 +7,12 @@ const notFoundImage =
 const NotFound = () => (
   <>
     <Header />
-    <div className="not-found-container">
-      <div className="not-found-image-container">
+    <div className="h-[75vh] flex flex-col justify-center ">
+      <div className='flex justify-center'>
         <img className="not-found-image" src={notFoundImage} alt="not found" />
       </div>
-      <h1 className="not-found-heading">Page Not Found</h1>
-      <p className="not-found-paragraph">
+      <h1 className="text-red-600 text-2xl font-semibold text-center mt-4 mb-2">Page Not Found</h1>
+      <p className="text-xs text-center">
         we’re sorry, the page you requested could not be found
       </p>
     </div>
