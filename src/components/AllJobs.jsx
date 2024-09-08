@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Loader from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import Cookies from 'js-cookie';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Header from './Header';
@@ -165,7 +165,7 @@ const AllJobs = () => {
       case apiStatusConstants.inProgress:
         return (
           <div className="loader-container" testid="loader">
-            <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+            <ThreeDots type="ThreeDots" color="#0b69ff" height="50" width="50" />
           </div>
         );
       default:
@@ -190,7 +190,7 @@ const AllJobs = () => {
       return (
         <ul className="ul-job-items-container">
           {jobsData.map(eachItem => (
-            <JobItem key={eachItem.id} jobData={eachItem} />
+            <ThreeDots key={eachItem.id} jobData={eachItem} />
           ))}
         </ul>
       );
@@ -223,7 +223,7 @@ const AllJobs = () => {
       case apiStatusConstants.inProgress:
         return (
           <div className="loader-container" testid="loader">
-            <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+            <ThreeDots type="ThreeDots" color="#0b69ff" height="50" width="50" />
           </div>
         );
       default:
