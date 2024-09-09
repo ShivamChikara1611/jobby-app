@@ -49,17 +49,17 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-[100vh]">
-      <form className="border border-2 rounded-lg p-8" onSubmit={onSubmitLoginForm}>
+    <div className="flex flex-col justify-center items-center h-[100vh] px-5">
+      <form className="border border-2 rounded-lg w-full p-5" onSubmit={onSubmitLoginForm}>
         <div className='flex justify-center mb-8'>
-          <img className='' src={websiteLogoInForm} alt="website logo" />
+          <img src={websiteLogoInForm} alt="website logo" />
         </div>
         <label className="text-lg" htmlFor="username">
           Username
         </label>
         <br />
         <input
-          className="bg-transparent border outline-none p-1 mt-2 px-2 rounded-md"
+          className="bg-transparent border outline-none p-1 mt-2 px-2 rounded-md w-full"
           type="text"
           value={username}
           onChange={e => setUsername(e.target.value)}
@@ -73,7 +73,7 @@ const LoginForm = () => {
         </label>
         <br />
         <input
-          className="bg-transparent border outline-none p-1 mt-2 px-2 rounded-md"
+          className="w-full bg-transparent border outline-none p-1 mt-2 px-2 rounded-md"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}

@@ -56,24 +56,27 @@ const Header = () => {
       <div
         className={`${
           showMenu ? "fixed w-full" : "h-0 w-0"
-        } md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-black transition-all text-blue-500`}
+        } md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden backdrop-blur-2xl transition-all text-blue-800`}
       >
         <div className="flex items-center justify-between px-5 py-6">
           <img className="w-[120px] cursor-pointer" src={websiteLogo} alt="" />
           <img
-            className="w-7 cursor-pointer"
+            className="w-10 cursor-pointer"
             onClick={() => setShowMenu(false)}
             src={assets.cross_icon}
             alt=""
           />
         </div>
-        <ul className="flex flex-col items-center gap-2 mt-5 px-5 text-lg font-medium">
-          <NavLink onClick={() => setShowMenu(false)} to="/">
-            <p className="px-[30px] py-2 rounded-full inline-block">Home</p>
+        <ul className="flex flex-col items-center justify-center h-[60vh] px-8 text-2xl font-semibold gap-5 w-full">
+          <NavLink className='w-full text-center' onClick={() => setShowMenu(false)} to="/">
+            <p className="w-full py-4 rounded-lg border hover:bg-blue-800 hover:border-transparent hover:text-gray-200 hover:scale-105 transition-all duration-300">Home</p>
           </NavLink>
-          <NavLink onClick={() => setShowMenu(false)} to="/jobs">
-            <p className="px-[30px] py-2 rounded-full inline-block">Jobs</p>
-          </NavLink>
+          <NavLink className='w-full text-center' onClick={() => setShowMenu(false)} to="/jobs">
+            <p className="w-full py-4 rounded-lg border hover:bg-blue-800 hover:border-transparent hover:text-gray-200 hover:scale-105 transition-all duration-300">Jobs</p>
+          </NavLink >
+          <button className='w-full text-center' onClick={onClickLogout}>
+            <p className="w-full py-4 rounded-lg border hover:bg-blue-800 hover:border-transparent hover:text-gray-200 hover:scale-105 transition-all duration-300">Logout</p>
+          </button>
         </ul>
       </div>
 
@@ -81,7 +84,7 @@ const Header = () => {
 
       <img
         onClick={() => setShowMenu(true)}
-        className="w-5 md:hidden cursor-pointer"
+        className="w-7 md:hidden cursor-pointer"
         src={assets.menu_icon}
         alt=""
       />
