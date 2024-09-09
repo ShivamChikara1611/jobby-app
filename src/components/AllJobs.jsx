@@ -310,7 +310,7 @@ const AllJobs = () => {
               className="w-full bg-transparent outline-none"
               type="search"
               onChange={onChangeInput}
-              placeholder="Search for a job"
+              placeholder="Search for a job role"
             />
             <button
               className="text-sm text-gray-300"
